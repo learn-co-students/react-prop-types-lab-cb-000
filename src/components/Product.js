@@ -26,19 +26,22 @@ Product.propTypes = {
   name : PropTypes.string.isRequired,
   producer : PropTypes.string,
   hasWatermark : PropTypes.bool,
-  color : PropTypes.oneOf(['white','eggshell-white','salmon']).isRequired
- weight: function(props, propName, componentName){
-   if(!(typeof props[propName] === 'number')) {
-+      return new Error("Must be a number");
-+    }
-+    if(!(propName in props)){
-+      return new Error(`missing ${propName}`);
-+    }
-+
-+    if(props[propName] > 300 || props[propName] < 80) {
-+      return new Error('Validation Failed');
-+    }
+  color : PropTypes.oneOf(['white','eggshell-white','salmon']).isRequired,
+  weight: function(props, propName, componentName) {
+   let weight = props[propName];
+   if (weight === undefined) {
+     return new Error("Sorry you must include a number for weight.");
+    }
+
+    if (typeof weight !== 'number') {
+      return new Error("Sorry weight must be a number.");
+    }
+
+    if(!(weight >= 80 && weight <= 300)){
+      return new Error("Must be within range of 80 to 300");
+    }
  }
+
 };
 
 export default Product;
