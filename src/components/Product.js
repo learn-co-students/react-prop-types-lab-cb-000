@@ -1,12 +1,10 @@
-export default class Product extends React.Component {
+import React from 'react';
+import PropTypes from 'prop-types';
+
+class Product extends React.Component {
   render() {
-    const { name, producer, hasWatermark, color, weight } = this.props;
     return (
-      <h1>{name}</h1>
-      <p>Producer: {producer}</p>
-      <p>Has a watermark?: {hasWatermark ? 'yes' : 'no'}</p>
-      <p>Color: {color}</p>
-      <p>Weight: {weight} lbs.</p>
+      <div>Product</div>
     )
   }
 }
@@ -35,3 +33,5 @@ Product.propTypes = {
 Product.defaultProps = {
   hasWatermark: false
 };
+
+export default Product;
