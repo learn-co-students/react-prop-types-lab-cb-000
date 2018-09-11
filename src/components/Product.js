@@ -24,7 +24,6 @@ function weightLength(props, propName, componentName) {
   return null; // assuming all is ok
 };
 
-
 Product.propTypes = {
   name: PropTypes.string.isRequired,
   producer: PropTypes.string,
